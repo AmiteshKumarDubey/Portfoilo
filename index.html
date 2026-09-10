@@ -18,11 +18,11 @@
       --primary: #64ffda;
       --primary-dark: #52d4b3;
       --secondary: #0a192f;
-      --dark: #020c1b;
+      --dark: #0a192f;
       --light: #e6f1ff;
       --gray: #8892b0;
       --gray-light: #a8b2d1;
-      --gray-dark: #112240;
+      --gray-dark: rgba(17, 34, 64, 0.5);
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       --transition: all 0.3s ease;
     }
@@ -241,7 +241,7 @@
       position: relative;
       overflow: hidden;
       padding-top: 80px;
-      background-color: var(--secondary);
+      background-color: transparent;
     }
 
     .hero-content-wrapper {
@@ -330,7 +330,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(20%) contrast(105%);
+      object-position: center 20%;
+      filter: grayscale(10%) contrast(105%);
       transition: var(--transition);
     }
 
@@ -340,36 +341,53 @@
 
     /* CARDS & GLASSMORPHISM */
     .card-dark {
-      background-color: var(--gray-dark);
+      background: rgba(17, 34, 64, 0.5);
+      backdrop-filter: blur(8px);
       border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(100, 255, 218, 0.1);
       transition: var(--transition);
     }
 
     .card-dark:hover {
       transform: translateY(-5px);
+      background: rgba(17, 34, 64, 0.7);
       border-color: rgba(100, 255, 218, 0.3);
       box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
     }
 
-    /* SKILLS CARDS */
+    /* SKILLS CARDS - Side-by-side responsive grid */
     .skills-grid {
       display: grid;
-      grid-template-cols: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
     }
 
+    @media (max-width: 1024px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .skill-card {
-      background-color: var(--gray-dark);
+      background: rgba(17, 34, 64, 0.5);
+      backdrop-filter: blur(8px);
       padding: 30px;
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(100, 255, 218, 0.1);
       transition: var(--transition);
     }
 
     .skill-card:hover {
       transform: translateY(-5px);
-      border-color: var(--primary);
+      background: rgba(17, 34, 64, 0.7);
+      border-color: rgba(100, 255, 218, 0.3);
+      box-shadow: 0 20px 30px -15px rgba(100, 255, 218, 0.15);
     }
 
     .skill-card h3 {
@@ -505,7 +523,7 @@
 
           <div class="floating-photo-box">
             <div class="photo-frame">
-              <img src="https://cdn.ailandingpage.ai/ai-landingpage/user-generate/86e85c51-9ee2-47f9-b5f5-343ac47bfa89/86e85c51-9ee2-47f9-b5f5-343ac47bfa89/hero/hero-main-b364ef19da31474f97372a9b596381dc.png" alt="Amitesh Kumar Dubey" />
+              <img src="images/user_photo.png" alt="Amitesh Kumar Dubey" />
             </div>
           </div>
         </div>
@@ -513,7 +531,7 @@
     </section>
 
     <!-- SECTION 01: ABOUT ME -->
-    <section id="about" style="background-color: var(--secondary); border-top: 1px solid rgba(255,255,255,0.05);">
+    <section id="about" class="border-t border-slate-800/40">
       <div class="container">
         <h2 class="section-title"><span>01.</span> About Me</h2>
         
@@ -570,7 +588,7 @@
 
           <div class="relative">
             <div class="card-dark p-2 overflow-hidden shadow-2xl">
-              <img src="https://cdn.ailandingpage.ai/ai-landingpage/user-generate/86e85c51-9ee2-47f9-b5f5-343ac47bfa89/86e85c51-9ee2-47f9-b5f5-343ac47bfa89/about/about-profile-84c4e743b3f5403fbcd8f4968f820c90.png" alt="Amitesh coding" class="w-full rounded-lg object-cover" />
+              <img src="images/user_photo.png" alt="Amitesh Kumar Dubey" class="w-full rounded-lg object-cover h-[380px] object-top" />
             </div>
           </div>
         </div>
@@ -578,7 +596,7 @@
     </section>
 
     <!-- SECTION 02: WORK EXPERIENCE -->
-    <section id="experience" style="background-color: var(--dark); border-top: 1px solid rgba(255,255,255,0.05);">
+    <section id="experience" class="border-t border-slate-800/40">
       <div class="container">
         <h2 class="section-title"><span>02.</span> Work Experience</h2>
 
@@ -668,7 +686,7 @@
     </section>
 
     <!-- SECTION 03: FEATURED PROJECTS -->
-    <section id="projects" style="background-color: var(--secondary); border-top: 1px solid rgba(255,255,255,0.05);">
+    <section id="projects" class="border-t border-slate-800/40">
       <div class="container">
         <h2 class="section-title"><span>03.</span> Featured Projects</h2>
         <p class="text-gray-400 mb-12 max-w-2xl text-lg">Key full-stack and AI applications. Click any card or Live Demo button to open the active live web app.</p>
@@ -680,7 +698,7 @@
           <div class="card-dark overflow-hidden flex flex-col group">
             <div class="relative overflow-hidden aspect-video bg-gray-900">
               <a href="https://accessibility-analyzer-i6h5.vercel.app/" target="_blank" rel="noopener noreferrer" class="block w-full h-full">
-                <img src="https://cdn.ailandingpage.ai/ai-landingpage/user-generate/86e85c51-9ee2-47f9-b5f5-343ac47bfa89/86e85c51-9ee2-47f9-b5f5-343ac47bfa89/projects/project-accessibility-288715e65f7d43e5ae48953794ff4e23.png" alt="Accessibility Analyzer" class="w-full h-48 sm:h-52 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                <img src="images/accessibility_real.png" alt="Accessibility Analyzer" class="w-full h-48 sm:h-52 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
                 <span class="absolute top-3 left-3 px-3 py-1 bg-slate-900/90 backdrop-blur-md text-teal-300 text-xs font-mono rounded-full border border-teal-500/30">
                   AI / Accessibility
@@ -760,7 +778,7 @@
           <div class="card-dark overflow-hidden flex flex-col group">
             <div class="relative overflow-hidden aspect-video bg-gray-900">
               <a href="https://h-26-y4kb.vercel.app/" target="_blank" rel="noopener noreferrer" class="block w-full h-full">
-                <img src="https://cdn.ailandingpage.ai/ai-landingpage/user-generate/86e85c51-9ee2-47f9-b5f5-343ac47bfa89/86e85c51-9ee2-47f9-b5f5-343ac47bfa89/projects/project-taskflow-0a5d54018e2d4f0f9feb9e270e008651.png" alt="Smart Water Management" class="w-full h-48 sm:h-52 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                <img src="images/water_management_real.png" alt="Smart Water Management" class="w-full h-48 sm:h-52 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
                 <span class="absolute top-3 left-3 px-3 py-1 bg-slate-900/90 backdrop-blur-md text-teal-300 text-xs font-mono rounded-full border border-teal-500/30">
                   IoT Dashboard
@@ -805,7 +823,7 @@
           <div class="card-dark overflow-hidden flex flex-col group">
             <div class="relative overflow-hidden aspect-video bg-gray-900">
               <a href="https://youtube-clone-v3vq.vercel.app/" target="_blank" rel="noopener noreferrer" class="block w-full h-full">
-                <img src="https://cdn.ailandingpage.ai/ai-landingpage/user-generate/86e85c51-9ee2-47f9-b5f5-343ac47bfa89/86e85c51-9ee2-47f9-b5f5-343ac47bfa89/projects/project-youtube-8adb9139c3a545268650a88226feb71f.png" alt="YouTube Clone" class="w-full h-48 sm:h-52 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                <img src="images/youtube_clone_real.png" alt="YouTube Clone" class="w-full h-48 sm:h-52 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
                 <span class="absolute top-3 left-3 px-3 py-1 bg-slate-900/90 backdrop-blur-md text-teal-300 text-xs font-mono rounded-full border border-teal-500/30">
                   Video Platform
@@ -939,7 +957,7 @@
     </section>
 
     <!-- SECTION 04: TECHNICAL SKILLS -->
-    <section id="skills" style="background-color: var(--dark); border-top: 1px solid rgba(255,255,255,0.05);">
+    <section id="skills" class="border-t border-slate-800/40">
       <div class="container">
         <h2 class="section-title"><span>04.</span> Technical Skills</h2>
 
@@ -998,7 +1016,7 @@
     </section>
 
     <!-- SECTION 05: CONTACT -->
-    <section id="contact" style="background-color: var(--secondary); border-top: 1px solid rgba(255,255,255,0.05);">
+    <section id="contact" class="border-t border-slate-800/40">
       <div class="container">
         <h2 class="section-title"><span>05.</span> Contact</h2>
         
@@ -1049,7 +1067,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer style="background-color: var(--dark); padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
+  <footer style="background-color: transparent; padding: 40px 0; border-top: 1px solid rgba(100, 255, 218, 0.1); text-align: center;">
     <div class="container">
       <p class="text-gray-400 text-sm mb-2">&copy; 2026 Amitesh Kumar Dubey. All rights reserved.</p>
       <p class="text-gray-500 text-xs mb-4">Built with ❤️ using HTML, CSS &amp; JavaScript</p>
